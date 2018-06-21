@@ -20,11 +20,10 @@ import com.moilioncircle.redis.replicator.cmd.Command;
 import com.moilioncircle.redis.replicator.cmd.CommandListener;
 import com.moilioncircle.redis.replicator.cmd.impl.SetCommand;
 import com.moilioncircle.redis.replicator.io.RateLimitInputStream;
+import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import java.util.concurrent.atomic.AtomicInteger;
-
-import static org.junit.Assert.assertEquals;
 
 /**
  * @author Leon Chen
@@ -42,6 +41,7 @@ public class RedisAofReplicatorTest {
         replicator.addCommandListener(new CommandListener() {
             @Override
             public void handle(Replicator replicator, Command command) {
+                System.out.println(command);
                 acc.incrementAndGet();
             }
         });
@@ -64,6 +64,7 @@ public class RedisAofReplicatorTest {
         replicator.addCommandListener(new CommandListener() {
             @Override
             public void handle(Replicator replicator, Command command) {
+                System.out.println(command);
                 if (command instanceof SetCommand && ((SetCommand) command).getKey().startsWith("test_")) {
                     acc.incrementAndGet();
                 }
@@ -89,6 +90,7 @@ public class RedisAofReplicatorTest {
         replicator.addCommandListener(new CommandListener() {
             @Override
             public void handle(Replicator replicator, Command command) {
+                System.out.println(command);
                 acc.incrementAndGet();
             }
         });
@@ -111,6 +113,7 @@ public class RedisAofReplicatorTest {
         replicator.addCommandListener(new CommandListener() {
             @Override
             public void handle(Replicator replicator, Command command) {
+                System.out.println(command);
                 acc.incrementAndGet();
             }
         });

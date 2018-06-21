@@ -87,7 +87,7 @@ public class RedisReplicator implements Replicator {
      */
     public RedisReplicator(String uri) throws URISyntaxException, IOException {
         Objects.requireNonNull(uri);
-        initialize(new RedisURI(uri));
+        this.initialize(new RedisURI(uri));
     }
 
     /**
